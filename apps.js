@@ -1,4 +1,4 @@
-const list = document.querySelector('#book-list ul');
+const list = document.querySelector('#show-list ul');
 const forms = document.forms;
 // delete books
 list.addEventListener('click', (e) => {
@@ -9,7 +9,7 @@ list.addEventListener('click', (e) => {
 });
 
 //add books
-const addForm = forms['add-book'];
+const addForm = forms['add-show'];
 addForm.addEventListener('submit', function(e){
   e.preventDefault();
 
@@ -17,19 +17,19 @@ addForm.addEventListener('submit', function(e){
 
  const value = addForm.querySelector('input[type="text"]').value;
  const li = document.createElement('li');
- const bookName = document.createElement('span');
+ const showName = document.createElement('span');
  const deleteBtn = document.createElement('span');
 
  // add text content
- bookName.textContent = value;
+ showName.textContent = value;
  deleteBtn.textContent = 'delete';
 
  //add classes
- bookName.classList.add('name');
+ showName.classList.add('name');
  deleteBtn.classList.add('delete');
  
  // append to DOM
- li.appendChild(bookName);
+ li.appendChild(showName);
  li.appendChild(deleteBtn);
  list.appendChild(li);
  //list.insertBefore(li, list.querySelector('li:first-child'));
@@ -44,16 +44,16 @@ list.style.display = "none";
     list.style.display = "initial";
   }
 });
-const searchBar = document.forms['search-books'].querySelector('input');
+const searchBar = document.forms['search-shows'].querySelector('input');
 searchBar.addEventListener('keyup', function(e){
   const term = e.target.value.toLowerCase();
-  const books = list.getElementsByTagName('li');
-  Array.from(books).forEach(function(book){
-const title = book.firstElementChild.textContent;
+  const shows = list.getElementsByTagName('li');
+  Array.from(shows).forEach(function(show){
+const title = show.firstElementChild.textContent;
 if(title.toLowerCase().indexOf(term)!=-1){
-  book.style.display = "block";
+  show.style.display = "block";
 } else {
-  book.style.display= "none";
+  show.style.display= "none";
 }
 })
 });
